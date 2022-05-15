@@ -100,12 +100,10 @@ impl X {
         (self.0).get_mut().set_state(state, flags);
     }
 
-    pub async fn tick(&mut self) {
-       self.await;
+    pub async fn tick(&mut self) -> Result<()> {
+        self.await
     }
 }
-
-
 
 fn read_u64(fd: RawFd) -> Result<u64> {
     let mut buf = [0u8; 8];
